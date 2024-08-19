@@ -26,6 +26,6 @@ jobs:
         "
 
       env:
-        FTP_HOST: ${{ secrets.FTP_HOST }}
-        FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        FTP_HOST: ${{ ftpupload.net }}
+        FTP_USERNAME: ${{ if0_37099789 }}
+        FTP_PASSWORD: ${{ Adityabhise }}
