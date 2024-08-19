@@ -21,7 +21,7 @@ jobs:
         lftp -e "
         open ftp://ftpupload.net;
         user if0_37099789 Adityabhise;
-        mirror -R ./htdocs;
+        mirror -R ./;
         bye;
         "
 
