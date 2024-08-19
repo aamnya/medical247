@@ -1,3 +1,15 @@
+
+<?php
+// Start the session to access session variables
+session_start();
+
+// Check if the user is logged in by verifying the session variable
+if (!isset($_SESSION['username'])) {
+    // If not logged in, redirect the user to the login page
+    header('Location: login.php');
+    exit(); // Ensure no further code is executed after redirect
+}
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -159,10 +171,10 @@ if ($_SERVER['REQUEST_METHOD']=='POST'){
 }
 
 //$MED = "paracentamol";
-$servername = "localhost";
-$username = "id22032244_medical247";
-$password = "Medical@247";
-$database = "id22032244_medical247";
+$servername = "sql110.infinityfree.com";
+$username = "if0_37099789";
+$password = "Adityabhise";
+$database = "if0_37099789_medical247database";
 try {
     // Establish connection
     $conn = new mysqli($servername, $username, $password, $database);
@@ -257,7 +269,17 @@ try {
     </div>
 </div>
 
+<div style="text-align: center; margin-top: 20px;">
+    <form action="logout.php" method="post">
+        <button type="submit" class="btn btn-danger">Log Out</button>
+    </form>
+</div>
+
 
 
 </body>
 </html>
+
+
+
+
