@@ -1,0 +1,31 @@
+name: Deploy to InfinityFree
+
+on:
+  push:
+    branches:
+      - main  # or the branch you want to deploy from
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install LFTP
+      run: sudo apt-get install lftp
+
+    - name: Deploy files via FTP
+      run: |
+        lftp -e "
+        open ftp://$FTP_HOST;
+        user $FTP_USERNAME $FTP_PASSWORD;
+        mirror -R ./ /path/to/your/infinityfree/directory;
+        bye;
+        "
+
+      env:
+        FTP_HOST: ${{ secrets.FTP_HOST }}
+        FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
