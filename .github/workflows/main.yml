@@ -20,8 +20,8 @@ jobs:
       run: |
         lftp -e "
         open ftp://ftpupload.net;
-        user if0_370997890 Adityabhisee;
-        mirror -R ./htdocs;
+        user if0_37099789 Adityabhise;
+        mirror -R ./home/vol2_8/infinityfree.com/if0_37099789;
         bye;
         "
 
