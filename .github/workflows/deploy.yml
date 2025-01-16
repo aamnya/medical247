@@ -1,1 +1,23 @@
-manish trying to deploy
+name: Deploy to InfinityFree
+
+on:
+  push:
+    branches:
+      - main  # Change to your desired branch if it's not 'main'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up FTP deployment
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      with:
+        ftp-server: ftp://ftp.infinityfree.com  # Use your FTP server URL (this is default for InfinityFree)
+        ftp-username: ${{ secrets.FTP_USERNAME }}  # This is your FTP username stored in GitHub secrets
+        ftp-password: ${{ secrets.FTP_PASSWORD }}  # This is your FTP password stored in GitHub secrets
+        local-dir: ./  # This is the local directory (root directory of the repo) to upload
+        server-dir: /htdocs/  # The server directory where files should be uploaded (for InfinityFree it's typically /htdocs)
